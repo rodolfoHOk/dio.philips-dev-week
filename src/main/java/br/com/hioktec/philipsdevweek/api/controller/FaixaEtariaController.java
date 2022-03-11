@@ -49,7 +49,8 @@ public class FaixaEtariaController {
 		return repository.save(newFaixaEtaria);
 	}
 	
-	@DeleteMapping("/remover/{id}") 
+	@DeleteMapping("/remover/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Void> deleteFaixaEtaria(@PathVariable Long id) {
 		if (repository.existsById(id)) {
 			repository.deleteById(id);

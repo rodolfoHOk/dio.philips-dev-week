@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,6 +47,17 @@ public class RegiaoController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Regiao createRegiao(@RequestBody Regiao newRegiao) {
 		return repository.save(newRegiao);
+	}
+	
+	@DeleteMapping("/remover/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public ResponseEntity<Void> deleteRegiao(@PathVariable Long id) {
+		if (repository.existsById(id)) {
+			repository.deleteById(id);
+			return ResponseEntity.noContent().build();
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
 }

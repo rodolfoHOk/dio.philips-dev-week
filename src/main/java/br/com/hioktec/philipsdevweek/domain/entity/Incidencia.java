@@ -12,12 +12,12 @@ import javax.persistence.Table;
 public class Incidencia {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false)
 	private Long id;
 	
 	@Column(name = "regiao_id")
-    private Integer regiaoId;
+    private Long regiaoId;
     
 	private Integer mes;
     
@@ -27,7 +27,7 @@ public class Incidencia {
 	@Column(name = "qtd_exames")
     private Integer qtdExames;
 
-	public Incidencia(Integer regiaoId, Integer mes, Long faixaId, Integer qtdExames) {
+	public Incidencia(Long regiaoId, Integer mes, Long faixaId, Integer qtdExames) {
 		this.regiaoId = regiaoId;
 		this.mes = mes;
 		this.faixaId = faixaId;
@@ -46,11 +46,11 @@ public class Incidencia {
 		this.id = id;
 	}
 
-	public Integer getRegiaoId() {
+	public Long getRegiaoId() {
 		return regiaoId;
 	}
 
-	public void setRegiaoId(Integer regiaoId) {
+	public void setRegiaoId(Long regiaoId) {
 		this.regiaoId = regiaoId;
 	}
 
